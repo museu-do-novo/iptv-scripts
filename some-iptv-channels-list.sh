@@ -25,5 +25,5 @@ shuf "$channels" | while read -r link; do
   clear
   cat "$channels"
   echo "Abrindo $link..."
-  vlc --fullscreen --random "$link"
+  vlc --fullscreen --random --nofile-logging "$link"
 done
