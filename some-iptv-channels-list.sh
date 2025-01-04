@@ -2,7 +2,6 @@
 
 # Limpar a tela
 clear;
-
 # Puxar os links do site
 curl -s https://ip-tv.app/ | grep -i "copy" | grep -i "https://" | awk -F '(' '{print $2}' | awk -F ',' '{gsub(/'\''/, ""); print $1}'
 
