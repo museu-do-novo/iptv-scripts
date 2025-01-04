@@ -18,6 +18,7 @@ fi
 # Selecionar e abrir links aleatórios
 shuf "$channels" | while read -r link; do
   clear
+  cat $channels
   echo "Abrindo $link..."
   vlc --fullscreen -q "$link"
 done
