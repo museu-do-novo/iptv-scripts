@@ -6,6 +6,11 @@ clear
 # Definir o caminho do arquivo de canais
 channels=/tmp/iptv-channels.txt
 
+if [[ "$1" == "-c" ]]; then
+  echo "removendo lista antiga de canais..."
+  rm "$channels"
+fi
+
 # Mensagem de carregamento
 echo "Carregando lista..."
 
@@ -18,7 +23,7 @@ fi
 # Selecionar e abrir links aleatórios
 shuf "$channels" | while read -r link; do
   clear
-  cat $channels
+  cat "$channels"
   echo "Abrindo $link..."
   vlc --fullscreen --random "$link"
 done
