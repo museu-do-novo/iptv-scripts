@@ -4,11 +4,11 @@
 clear
 
 # Definir o caminho do arquivo de canais
-channels=/tmp/iptv-channels.txt
+channels=$TMPDIR/iptv-channels.txt
 
 # Cleanup
 if [[ "$1" == "-c" ]]; then
-  echo "removendo lista antiga de canais..."
+  echo "Removendo lista antiga de canais..."
   rm "$channels"
 fi
 
@@ -21,5 +21,14 @@ if [ ! -f "$channels" ]; then
   awk -F '(' '{print $2}' | awk -F ',' '{gsub(/'\''/, ""); print $1}' > "$channels"
 fi
 
-echo "Carregando todos os canais..."
-vlc --fullscreen --random --nofile-logging "$channels"
+# Verificar se o argumento -a foi passado
+if [[ "$1" == "-a" ]]; then
+  echo "Abrindo todos os canais no VLC via 'am'..."
+  while read -r channel; do
+    am start -a android.intent.action.VIEW -d "$channel" -n "org.videolan.vlc/.gui.video.VideoPlayerActivity"
+    sleep 1 # Pausa entre os comandos para evitar sobrecarga
+  done < "$channels"
+else
+  echo "Carregando todos os canais no VLC (modo padrão)..."
+  vlc --fullscreen --random --nofile-logging "$channels"
+fi
