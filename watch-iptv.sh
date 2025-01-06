@@ -6,6 +6,7 @@ clear
 # Definir o caminho do arquivo de canais
 channels=/tmp/iptv-channels.txt
 
+# Cleanup
 if [[ "$1" == "-c" ]]; then
   echo "removendo lista antiga de canais..."
   rm "$channels"
@@ -20,10 +21,5 @@ if [ ! -f "$channels" ]; then
   awk -F '(' '{print $2}' | awk -F ',' '{gsub(/'\''/, ""); print $1}' > "$channels"
 fi
 
-# Selecionar e abrir links aleatórios
-shuf "$channels" | while read -r link; do
-  clear
-  cat "$channels"
-  echo "Abrindo $link..."
-  vlc --fullscreen --random --nofile-logging "$link"
-done
+echo "Carregando todos os canais..."
+vlc --fullscreen --random --nofile-logging "$channels"
