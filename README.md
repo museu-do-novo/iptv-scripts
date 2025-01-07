@@ -25,8 +25,7 @@ Para executar os scripts no Android, é necessário:
 ### Instalação
 1. Clone este repositório no Termux:
    ```bash
-   git clone https://github.com/seu-repositorio/iptv-scripts.git
-   cd iptv-scripts
+   git clone https://github.com/seu-repositorio/iptv-scripts.git; cd iptv-scripts
 
 2. Execute o script de configuração:
 
