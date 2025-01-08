@@ -53,6 +53,11 @@ while true; do
   total_channels=$(wc -l < "$channels")
   if [[ "$choice" -ge 1 && "$choice" -le "$total_channels" ]]; then
     selected_channel=$(sed -n "${choice}p" "$channels")
+
+    # Forçar parada do VLC antes de iniciar
+    echo "Forçando a parada do VLC..."
+    am force-stop org.videolan.vlc
+
     echo "Abrindo: $selected_channel"
     am start -a android.intent.action.VIEW -d "$selected_channel" -n "org.videolan.vlc/.gui.video.VideoPlayerActivity"
     sleep 1
