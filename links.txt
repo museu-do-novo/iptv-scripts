@@ -1,6 +1,6 @@
 https://iptv-org.github.io/iptv/index.m3u
 https://www.techedubyte.com/iptv-pro-playlist-m3u-github/
-
+https://m3upt.com/iptv
 
 https://www.lyngsat.com/
 https://rabbitears.info/
