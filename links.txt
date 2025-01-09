@@ -1,1 +1,7 @@
 https://iptv-org.github.io/iptv/index.m3u
+https://www.techedubyte.com/iptv-pro-playlist-m3u-github/
+
+
+https://www.lyngsat.com/
+https://rabbitears.info/
+https://www.satindex.de/
