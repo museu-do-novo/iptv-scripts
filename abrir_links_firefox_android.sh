@@ -12,6 +12,6 @@ fi
 # Lê cada linha do arquivo e abre no Firefox
 while IFS= read -r link; do
   echo "Abrindo: $link"
-  am start -a android.intent.action.VIEW -d "$link" com.mozilla.firefox
-  sleep 2 # Espera 2 segundos entre os links (opcional)
+  am start -a android.intent.action.VIEW -d "$link" org.mozilla.firefox
+  # sleep 2 # Espera 2 segundos entre os links (opcional, desativado)
 done < "$ARQUIVO_LINKS"
