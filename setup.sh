@@ -30,7 +30,8 @@ setup_android() {
   termux-open "$apk_file"
 
   # Solicitar ao usuário que finalize a instalação manualmente
-  echo "Por favor, finalize a instalação do VLC na interface que foi aberta."
+  echo "Por favor, finalize a instalação do VLC na interface que for aberta."
+  sleep 2
   echo "Pressione ENTER após concluir a instalação."
   read -r # Aguarda o usuário confirmar que finalizou a instalação
 
