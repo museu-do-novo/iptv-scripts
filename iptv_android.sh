@@ -99,7 +99,7 @@ while true; do
   if [[ "$choice" -ge 1 && "$choice" -le "$total_channels" ]]; then
     selected_channel=$(sed -n "${choice}p" "$channels")
     echo "Abrindo: $selected_channel"
-    am start -a android.intent.action.VIEW -d "$selected_channel" -n "org.videolan.vlc/.gui.video.VideoPlayerActivity"
+    am start -S -W -a android.intent.action.VIEW -d "$selected_channel" -n "org.videolan.vlc/.gui.video.VideoPlayerActivity"
     sleep 1
   else
     echo "Opção inválida. Tente novamente."
