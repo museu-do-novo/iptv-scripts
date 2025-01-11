@@ -1,5 +1,6 @@
 #!/bin/bash
 
+chmod +x ./*.sh
 # Função para configurar no Android
 setup_android() {
   clear
