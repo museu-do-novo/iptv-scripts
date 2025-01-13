@@ -2,7 +2,7 @@
 
 # Limpar a tela
 clear
-
+TMPDIR=/tmp
 # Definir o caminho do arquivo de canais
 channels=$TMPDIR/iptv-channels.txt
 
