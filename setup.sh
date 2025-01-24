@@ -18,19 +18,19 @@ setup_android() {
   # Garantir que o curl e o termux-tools estão instalados
   echo "Verificando dependências no Termux..."
   pkg update -y
-  pkg install -y curl termux-tools
+  pkg install -y curl termux-tools termux-api
 
   # Baixar o VLC APK do link atualizado no F-Droid
   echo "Baixando VLC APK..."
   apk_file=$TMPDIR/vlc.apk
-  curl -L -o "$apk_file" https://f-droid.org/repo/org.videolan.vlc_13050736.apk
+  
 
   # Instalar o VLC usando termux-open
   echo "Iniciando o instalador do VLC..."
   termux-open "$apk_file"
 
   # Solicitar ao usuário que finalize a instalação manualmente
-  echo "Por favor, finalize a instalação do VLC na interface que for aberta."
+  termux-toast "Por favor, finalize a instalação do VLC na interface que for aberta."
   sleep 2
   echo "Pressione ENTER após concluir a instalação."
   read -r # Aguarda o usuário confirmar que finalizou a instalação
