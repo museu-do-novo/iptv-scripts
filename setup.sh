@@ -22,8 +22,8 @@ setup_android() {
 
   # Baixar o VLC APK do link atualizado no F-Droid
   echo "Baixando VLC APK..."
-  apk_file=$TMPDIR/vlc.apk
-  wget -O "$apk_file" https://f-droid.org/repo/org.videolan.vlc_13050736.apk
+  apk_file=~/storage/downloads/vlc.apk
+  wget --no-check-certificate -O "$apk_file" https://f-droid.org/repo/org.videolan.vlc_13050736.apk
 
   # Instalar o VLC usando termux-open
   echo "Iniciando o instalador do VLC..."
