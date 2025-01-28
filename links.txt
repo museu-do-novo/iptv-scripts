@@ -30,3 +30,5 @@ LG Channels – https://www.apsattv.com/lg.m3u
 Vizio TV – https://www.apsattv.com/vizio.m3u
 Klowd TV – https://www.apsattv.com/klowd.m3u
 Samsung TV Plus – https://i.mjh.nz/SamsungTVPlus/all.m3u8
+
+https://amitb3669.github.io/allinone-special-playlist.m3u/
