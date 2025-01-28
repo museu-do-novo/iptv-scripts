@@ -19,46 +19,30 @@ setup_android() {
   echo "Solicitando permissões de armazenamento no Termux..."
   termux-setup-storage || { echo "Erro ao configurar armazenamento no Termux."; exit 1; }
 
-  # Atualizar pacotes e instalar dependências no Termux
-  echo "Atualizando pacotes e instalando dependências no Termux..."
-  if ! pkg update -y && pkg install -y curl termux-tools termux-api; then
-    echo "Erro ao instalar dependências no Termux."
-    exit 1
-  fi
-
   # Definir caminho para o arquivo APK do VLC
   VLC_APK_PATH=~/storage/downloads/vlc.apk
   VLC_DOWNLOAD_URL="https://f-droid.org/repo/org.videolan.vlc_13050736.apk"
 
   # Baixar o APK do VLC
-  echo "Baixando o APK do VLC do F-Droid..."
+  echo "Baixando o APK do VLC para a pasta Downloads..."
   if ! wget --no-check-certificate -O "$VLC_APK_PATH" "$VLC_DOWNLOAD_URL"; then
     echo "Erro ao baixar o APK do VLC. Verifique sua conexão com a Internet."
     exit 1
   fi
 
-  # Instalar o APK do VLC usando termux-open
-  echo "Iniciando a instalação do VLC..."
-  if ! termux-open "$VLC_APK_PATH"; then
-    echo "Erro ao abrir o instalador do VLC. Verifique o APK baixado."
-    exit 1
-  fi
+  # Informar o usuário sobre a instalação manual
+  echo "O APK do VLC foi baixado na pasta Downloads:"
+  echo "$VLC_APK_PATH"
+  echo "Por favor, instale manualmente o APK do VLC."
+  termux-toast "O APK do VLC foi baixado. Instale manualmente."
 
-  # Avisar o usuário sobre a instalação manual
-  termux-toast "Por favor, conclua a instalação do VLC na interface exibida."
-  echo "Pressione ENTER após concluir a instalação manual do VLC."
-  read -r # Aguarda o usuário confirmar que finalizou a instalação
-
-  # Remover o arquivo APK após a instalação
-  echo "Removendo arquivo APK do VLC..."
-  rm -f "$VLC_APK_PATH"
-
-  # Confirmar que a instalação foi finalizada
-  echo "Instalação do VLC concluída com sucesso."
+  # Confirmar que o processo de download foi concluído
+  echo "Apos instalar pressione enter..."
 
   # Limpar a tela e chamar o script para IPTV no Android
   clear
-  echo "Executando o script de configuração do IPTV para Android..."
+  echo "Executando o script de IPTV para Android..."
+  sleep 3
   bash iptv_android.sh || { echo "Erro ao executar o script iptv_android.sh."; exit 1; }
 }
 
