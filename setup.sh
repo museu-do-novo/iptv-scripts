@@ -19,6 +19,19 @@ setup_android() {
   echo "Solicitando permissões de armazenamento no Termux..."
   termux-setup-storage || { echo "Erro ao configurar armazenamento no Termux."; exit 1; }
 
+  # Atualizar pacotes e instalar dependências necessárias
+  echo "Atualizando pacotes e instalando dependências no Termux..."
+  if ! pkg update -y && pkg upgrade -y; then
+    echo "Erro ao atualizar pacotes no Termux."
+    exit 1
+  fi
+
+  echo "Instalando dependências necessárias (curl, wget, termux-tools)..."
+  if ! pkg install -y curl wget termux-tools termux-api; then
+    echo "Erro ao instalar dependências no Termux."
+    exit 1
+  fi
+
   # Definir caminho para o arquivo APK do VLC
   VLC_APK_PATH=~/storage/downloads/vlc.apk
   VLC_DOWNLOAD_URL="https://f-droid.org/repo/org.videolan.vlc_13050736.apk"
@@ -37,7 +50,8 @@ setup_android() {
   termux-toast "O APK do VLC foi baixado. Instale manualmente."
 
   # Confirmar que o processo de download foi concluído
-  echo "Apos instalar pressione enter..."
+  echo "Após instalar, pressione ENTER para continuar..."
+  read -r # Aguarda o usuário confirmar que instalou o APK
 
   # Limpar a tela e chamar o script para IPTV no Android
   clear
