@@ -17,7 +17,7 @@ setup_android() {
 
   # Solicitar permissão de armazenamento no Termux
   echo "Solicitando permissões de armazenamento no Termux..."
-  termux-setup-storage || { echo "Erro ao configurar armazenamento no Termux."; exit 1; }
+  termux-setup-storage
 
   # Atualizar pacotes e instalar dependências necessárias
   echo "Atualizando pacotes e instalando dependências no Termux..."
